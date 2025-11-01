@@ -17,6 +17,7 @@
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
                     <div class="float-end mt-3">
+                        <a href="{{route('register')}}">Belum punya akun ?, daftar disini.</a>
                         <button type="submit" class="btn btn-primary"> Login</button>
                     </div>
                 </form>

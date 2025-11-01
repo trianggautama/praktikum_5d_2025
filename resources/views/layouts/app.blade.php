@@ -27,7 +27,12 @@
                 </ul>
                 <div>
                     @if(Auth::check())
-                        <button class="btn btn-outline-success" type="submit">Logout</button>
+                        <form method="post" action="{{route('logout')}}">
+                            @csrf
+                            <button class="btn btn-outline-success" type="submit">
+                                Logout
+                            </button>
+                        </form>
                     @endif
                 </div>
             </div>
