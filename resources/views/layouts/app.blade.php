@@ -39,7 +39,7 @@
         </div>
     </nav>
     @yield('content')
-    <div class="text-center bg-light p-4">
+    <div class="mt-4 text-center bg-light p-4 fixed-bottom">
         @copyright nama
     </div>
     

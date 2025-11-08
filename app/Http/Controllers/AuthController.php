@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class AuthController extends Controller
         if(Auth::attempt($credentials,true))
         {
             //login berhasil 
-            return redirect()->route('profile');
+            return redirect()->route('dashboard');
         }else{
             //login gagal
             return redirect()->route('home');
@@ -46,14 +47,21 @@ class AuthController extends Controller
                     'username'=> $request->username,
                     'password'=> Hash::make($request->password)
                 ]);
+                
         //login menggunakan dat auser tersimpan
         if(Auth::attempt(['username' => $user->username,'password' => $request->password],true))
         {
             //login berhasil 
-            return redirect()->route('profile');
+            return redirect()->route('dashboard');
         }else{
             //login gagal
             return redirect()->route('register');
         }
+    }
+
+    public function dashboard()
+    {
+        $posts = Posts::paginate(10);
+        return view('dashboard',compact('posts'));
     }
 }
