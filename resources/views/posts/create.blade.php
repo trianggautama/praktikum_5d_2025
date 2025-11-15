@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-3">
                     <label for="">Body</label>
-                    <textarea type="text" class="form-control" placeholder="Enter Post Content" name="body" >{{old('body')}}</textarea>
+                    <textarea type="text" class="form-control" placeholder="Enter Post Content" name="body">{{old('body')}}</textarea>
                     @error('body')
                         <small class="text-danger"> {{$message}}</small>
                     @enderror

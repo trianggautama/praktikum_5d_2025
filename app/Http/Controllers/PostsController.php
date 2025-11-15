@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostPostsRequest;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(PostPostsRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
@@ -29,7 +30,7 @@ class PostsController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PostPostsRequest $request, $id)
     {
         $input  = $request->all();
         $post   = Posts::find($id);

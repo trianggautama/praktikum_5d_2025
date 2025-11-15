@@ -59,9 +59,19 @@ class AuthController extends Controller
         }
     }
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        $posts = Posts::paginate(10);
+        $request->flash();
+
+        $posts = Posts::query();
+
+        if($request->filled('keyword'))
+        {
+            $posts->where('title','like','%'.$request->keyword.'%');
+        }
+
+        $posts = $posts->paginate(10);
+        
         return view('dashboard',compact('posts'));
     }
 }
